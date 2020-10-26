@@ -1,25 +1,28 @@
 package comment.on.sahibinden;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
+import javax.ws.rs.core.Response;
 
-@Path("/comments")
+@Path("/comment")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CommentResource {
 
-    @Inject CommentService commentService;
+    @Inject
+    CommentService service;
 
     @GET
-    public List<Comment> list() {
-        return commentService.list();
+    @Path("/{id}")
+    public Response comments(@PathParam("id") String id) {
+        return Response.ok(service.getCommentsByRecordId(id)).build();
     }
 
     @POST
-    public List<Comment> add(Comment comment) {
-        commentService.add(comment);
-        return list();
+    public Response save(@Valid Comment comment) {
+        service.save(comment);
+        return Response.ok().build();
     }
 }

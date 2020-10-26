@@ -1,16 +1,21 @@
 package comment.on.sahibinden;
 
 import io.quarkus.mongodb.panache.MongoEntity;
-import io.quarkus.mongodb.panache.reactive.ReactivePanacheMongoEntity;
+import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.bson.codecs.pojo.annotations.BsonId;
+import org.bson.types.ObjectId;
 
-import java.io.Serializable;
 import java.util.Date;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-@MongoEntity(collection = "comments")
-public class Comment extends ReactivePanacheMongoEntity implements Serializable {
-    private String id;
-    private String text;
+@MongoEntity(collection = "comment")
+public class Comment extends PanacheMongoEntityBase {
+    @BsonId
+    private ObjectId id;
+    private String recordId;
+    private String comment;
     private Date date;
 }
