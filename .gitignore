@@ -34,3 +34,8 @@ nb-configuration.xml
 *.orig
 *.rej
 
+.dockerignore
+mvnw
+mvnw.cmd
+quarkus.iml
+
