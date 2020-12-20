@@ -1,4 +1,4 @@
-package comment.on.sahibinden;
+package comment.on;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

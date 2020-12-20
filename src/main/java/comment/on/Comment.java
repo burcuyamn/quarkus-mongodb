@@ -1,4 +1,4 @@
-package comment.on.sahibinden;
+package comment.on;
 
 import io.quarkus.mongodb.panache.MongoEntity;
 import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
